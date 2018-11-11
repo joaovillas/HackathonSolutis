@@ -9,6 +9,7 @@
     "react": "^16.6.1",
     "react-dom": "^16.6.1",
     "react-google-maps": "^9.4.5",
+    "react-loading-screen": "0.0.17",
     "react-scripts": "2.1.1",
     "react-sidebar": "^3.0.2"
   },

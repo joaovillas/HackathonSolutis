@@ -12,7 +12,8 @@ import Sidebar from '../sidebar/sidebar.js';
 
 
 export class MapContainer extends React.Component {
-
+    
+    
     state ={
         markers:[],
         client:{
@@ -25,11 +26,16 @@ export class MapContainer extends React.Component {
             categoria:null,
             display:'inline',
             
-        }
+        },
+        semaforo:false,
+        cupons:[]
     }
     
     clickInfoLoja(props){
         this.setState({footer:{nome: props.name,categoria: props.categoria,horario: props.funcionamento}});
+        
+        
+
         
     }
 
@@ -38,16 +44,29 @@ export class MapContainer extends React.Component {
         
     }
 
+    
+    componentDidUpdate(){
+        
+        if(this.state.semaforo == false){
+            
+            axios.get('https://7ad9f341.ngrok.io/api/lojas').then((data)=>{
+                this.setState({markers:data.data.data});
+            });
 
+            axios.get('https://7ad9f341.ngrok.io/api/users/1').then((data)=>{    
+            this.setState({cupons:data.data.data.cupons});
+            });
+             
+            this.setState({semaforo:true});
+            
+        }
+        
+        
+    }
     
     componentDidMount(){
-        axios.get('https://7ad9f341.ngrok.io/api/lojas').then((data)=>{
-            this.setState({markers:data.data.data});
-            console.log(this.state);
-        });
         
-        // let a = -0.0000001;
-        // let b = 0.01;
+        
 
         setInterval(()=>{
         
@@ -56,17 +75,24 @@ export class MapContainer extends React.Component {
                 
                 this.setState({client:{lat:loc.coords.latitude, lng:loc.coords.longitude }});
                 });      
-            //   a -= 0.05;
-            //   b +=0.05;
+           
+            
               
-            },2000);
+            },3000);
+
+        
+
+            
+        // let a = -0.0000001;
+        // let b = 0.01;
 
           
     }
     
     
     render() {
-    
+        
+
         const triangleCoords = [
         {lat: 25.774, lng: -80.190},
         {lat: 18.466, lng: -66.118},
@@ -82,7 +108,7 @@ export class MapContainer extends React.Component {
         lng: -38.413762
       }} zoom={10}  onClick={()=> this.removeInfoLoja()}>
       
-      <Sidebar></Sidebar>
+      <Sidebar cupons = {this.state.cupons} />
       <Info_Footer nome={this.state.footer.nome} categoria={this.state.footer.categoria} display={this.state.footer.display} horario={this.state.footer.horario} />      
 
             {this.state.markers.map((marker)=>{
