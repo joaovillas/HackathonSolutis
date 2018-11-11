@@ -46,18 +46,18 @@ export class MapContainer extends React.Component {
             console.log(this.state);
         });
         
-        let a = -0.0000001;
-        let b = 0.01;
+        // let a = -0.0000001;
+        // let b = 0.01;
 
         setInterval(()=>{
         
             navigator.geolocation.getCurrentPosition((loc)=>{
                 
                 
-                this.setState({client:{lat:loc.coords.latitude-a, lng:loc.coords.longitude+b }});
+                this.setState({client:{lat:loc.coords.latitude, lng:loc.coords.longitude }});
                 });      
-              a -= 0.05;
-              b +=0.05;
+            //   a -= 0.05;
+            //   b +=0.05;
               
             },3500);
 
