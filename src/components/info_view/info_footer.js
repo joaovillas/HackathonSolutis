@@ -9,6 +9,7 @@ const style={
         float:"right",
         zIndex:"10",
         borderRadius:"4vh",
+        border:"2px solid black",
         padding:'1vh',
         marginLeft:"1vh",
         marginTop:"3vh",

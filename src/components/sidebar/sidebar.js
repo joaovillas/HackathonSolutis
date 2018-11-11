@@ -4,16 +4,18 @@ import React, { Component } from 'react';
 const style = { 
     style:{
         marginLeft:"1vh",
-        width:'30vh',
+        width:'23vh',
         height:"65vh",
         marginTop:"28vh",
-        backgroundColor:"gray",
+        backgroundColor:"rgb(249,249,249)",
         zIndex:"11",
         position:"fixed",   
         float:"left",
-        borderRadius:"4vh",
+        borderRadius:"2vh",
+        border:"2px solid black",
         text:{
-            fontSize:"2vh",
+            fontSize:"3vh",
+            color:"black",
             fontFamily:"fontFamily: 'Roboto Mono, monospace'"
         }
 
