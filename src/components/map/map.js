@@ -59,7 +59,7 @@ export class MapContainer extends React.Component {
             //   a -= 0.05;
             //   b +=0.05;
               
-            },3500);
+            },900);
 
           
     }
