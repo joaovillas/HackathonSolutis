@@ -41,7 +41,7 @@ export class MapContainer extends React.Component {
 
     
     componentDidMount(){
-        axios.get('http://7ad9f341.ngrok.io/api/lojas').then((data)=>{
+        axios.get('https://7ad9f341.ngrok.io/api/lojas').then((data)=>{
             this.setState({markers:data.data.data});
             console.log(this.state);
         });
